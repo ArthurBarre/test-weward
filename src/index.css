@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .app {
   width: 100vw;
@@ -20,6 +21,9 @@ body {
 .render {
   width: 50vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: lightcoral;
 }
 
@@ -40,6 +44,21 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .buttons div:nth-child(1) {
   margin-bottom: 2% ;
+}
+
+.card {
+  width:80%;
+  height:80%
+}
+
+.map {
+  height:80px;
+}
+
+.logo-maps {
+  width: 30px;
+  height: 30px;
 }

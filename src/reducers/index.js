@@ -13,7 +13,7 @@ const allReducers =  combineReducers({
   desc:descReducer,
   rem:remReducer,
   location: locationReducer,
-  adress:adressReducer
+  address:adressReducer
 })
 
 export default allReducers;

@@ -33,9 +33,9 @@ export const setRem = ( nbr ) => {
   }
 }
 
-export const setAdress = ( nbr ) => {
+export const setAdress = ( str ) => {
   return {
     type: 'SET_ADDRESS',
-    payload: nbr
+    payload: str
   }
 }

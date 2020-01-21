@@ -1,4 +1,6 @@
 import React from 'react';
+import MapContainer from './Map'
+
 import '../index.css';
 import {useSelector} from 'react-redux';
 
@@ -9,11 +11,21 @@ export default () => {
 
   return(
   <div className='render'>
-    <div>Titre de la campagne : {data.title}</div>
-    <div>Date du début de la campagne : {data.date}</div>
-    <div>Description de la campagne : {data.desc}</div>
-    <div>Rémunération de la campagne : {data.rem}</div>
-    <div>Adresse du point de vente de la campagne : {data.address}</div>
+    <div className="card">
+      <div className="card-body">
+      <h5 className="card-title">{data.title}</h5>
+      <p className="card-text">{data.desc}</p>
+      <div className="card-text">Date du début de la campagne : <strong>{data.date}</strong> </div>
+      <MapContainer title={data.title} location={data.location} center={data.location} className='map'/>
+      </div>
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item">Adresse du point de vente de la campagne : <strong>{data.address}</strong> </li>
+        <li className="list-group-item">Rémunération de la campagne <strong>{data.rem}</strong> </li>
+      </ul>
+      <div className="card-body">
+        <a className="card-link">Save</a>
+      </div>
+    </div>
   </div>
   )
 }

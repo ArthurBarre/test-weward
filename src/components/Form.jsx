@@ -17,7 +17,6 @@ export default () => {
   const [description , setDescription] =  useState('');
   const [rawLocation, setRawLocation] = useState({});
   const [remuneration, setRemuneration] = useState(500);
-  const [postalCode, setPostalCode] = useState(75019);
   const [date , setRawDate] =  useState(new Date());
   // setRawDate()
   const dispatch = useDispatch();
@@ -43,7 +42,6 @@ const saveData = () => {
   dispatch(setAdress(address))
 }
 const handleDate = date => {
-  // console.log(moment(date).format('DD-MM-YYYY'))
   setRawDate(date)
 };
 
