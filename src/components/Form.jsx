@@ -1,35 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import DatePicker from "react-datepicker";
-import {api_key} from '../constants';
-
-import {setLocation, setDesc, setRem, setTitle, setDate, setAdress, submit} from '../actions/index';
+import { api_key } from '../constants';
+import {setLocation, setDesc, setRem, setTitle, setDate, setAdress, submit, close} from '../actions/index';
 import '../index.css';
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
 export default () => {
+
   const [address , setRawAdress] =  useState('12 Rue de Crimée 75019');
   const [title , setRawTitle] =  useState('Ma campagne');
   const [description , setDescription] =  useState('Description de la campagne');
   const [rawLocation, setRawLocation] = useState({});
   const [remuneration, setRemuneration] = useState(500);
-  const [date , setRawDate] =  useState(new Date());
+  const [date , setRawDate] = useState(new Date());
   const dispatch = useDispatch();
-  const getPoint = () => {
+
+  const submitData = () => {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
         params:{
           address:address,
           key:api_key
         }
-      })
-      .then(function(response){
-        setRawLocation(response.data.results[0].geometry.location);
-          saveData()
-      })
+    })
+    .then(function(response){
+      setRawLocation(response.data.results[0].geometry.location);
+      saveData();
+    })
 }
 
 const saveData = () => {
@@ -44,6 +43,9 @@ const saveData = () => {
 
 const revealData = () => {
   dispatch(submit())
+  setTimeout(() => {
+    dispatch(close())
+  }, 4000);
 }
 
 const handleDate = date => {
@@ -107,7 +109,7 @@ const handleDate = date => {
         <div 
         type="submit" 
         className="btn btn-primary"
-        onClick={()=>getPoint()}
+        onClick={()=>submitData()}
         >Enregister le nouveau point de vente</div>
         <div 
         type="submit" 

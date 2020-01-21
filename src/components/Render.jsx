@@ -2,8 +2,8 @@ import React from 'react';
 import MapContainer from './Map'
 import FlashMessage from 'react-flash-message';
 import '../index.css';
-import {useSelector, useDispatch} from 'react-redux';
-import {close} from '../actions/index';
+import { useSelector, useDispatch } from 'react-redux';
+import { close } from '../actions/index';
 
 
 export default () => {
@@ -33,6 +33,7 @@ export default () => {
       </div>
     </FlashMessage>
   )
+
   return(
   <div className='render'>
     {
@@ -50,7 +51,6 @@ export default () => {
       </ul>
       </div>
       <MapContainer title={data.title} location={data.location} center={data.location} className='map'/>
-      
       <div className="card-body">
         <a href="https://www.weward.fr/" className="card-link">WeWard</a>
       </div>
