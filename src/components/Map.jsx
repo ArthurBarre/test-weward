@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { useSelector } from 'react-redux';
 import GoogleMapReact from 'google-map-react';
 import logo from '../assets/images/logo.png'
-import {api_key} from '../constants';
+import { api_key } from '../constants';
 
 const MarkerEvent = () =>(
   <div>
@@ -9,35 +10,27 @@ const MarkerEvent = () =>(
   </div>
 );
 
-class EventMap extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      center: {
-        lat: 48,
-        lng: 2.33
-      },
-      zoom: 5
-    };
-  }
-
-  render() {
-    let location = this.props.location;
-
-    return (
-      <div style={{ height: '350px', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: api_key }}
-          defaultCenter={ this.state.center }
-          defaultZoom={ this.state.zoom }
-        >
-          <MarkerEvent
-            lat={ location.lat }
-            lng={ location.lng }
-          />
-        </GoogleMapReact>
-      </div>
-    );
-  }
+export default () => {
+  const location = useSelector(state => state.location);
+  const [viewPort, setViewport] = useState({
+    center: {
+      lat: 48,
+      lng: 2.33
+    },
+    zoom: 5
+  })
+  return(
+    <div style={{ height: '350px', width: '100%' }}>
+    <GoogleMapReact
+      bootstrapURLKeys={{ key: api_key }}
+      defaultCenter={ viewPort.center }
+      defaultZoom={ viewPort.zoom }
+    >
+      <MarkerEvent
+        lat={ location.lat }
+        lng={ location.lng }
+      />
+    </GoogleMapReact>
+  </div>
+  )
 }
-export default EventMap;
