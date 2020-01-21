@@ -50,7 +50,7 @@ export default () => {
         <li className="list-group-item">Date du début de la campagne : <strong>{data.date}</strong></li>
       </ul>
       </div>
-      <MapContainer title={data.title} location={data.location} center={data.location} className='map'/>
+      <MapContainer location={data.location} />
       <div className="card-body">
         <a href="https://www.weward.fr/" className="card-link">WeWard</a>
       </div>

@@ -107,16 +107,16 @@ const handleDate = date => {
         />
         </div>
         <div className="buttons">
-        <div 
-        type="submit" 
-        className="btn btn-primary"
-        onClick={()=>submitData()}
-        >Enregister le nouveau point de vente</div>
-        <div 
-        type="submit" 
-        className="btn btn-primary"
-        onClick={()=>revealData()}
-        >Résumé</div>
+          <div 
+          type="submit" 
+          className="btn btn-primary"
+          onClick={()=>submitData()}
+          >Enregister le nouveau point de vente</div>
+          <div 
+          type="submit" 
+          className="btn btn-primary"
+          onClick={()=>revealData()}
+          >Résumé</div>
         </div>
       </form>
     </div>
