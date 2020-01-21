@@ -5,7 +5,6 @@ body {
 .app {
   width: 100vw;
   height: 100vh;
-  background-color: lightgray;
   display: flex;
   flex-direction: row;
 }
@@ -13,10 +12,34 @@ body {
 .form {
   width: 50vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
 }
 
 .render {
   width: 50vw;
   height: 100vh;
   background-color: lightcoral;
+}
+
+.form-campaign {
+  width:80%;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-picker {
+  border-radius: 0.25rem ;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+.buttons div:nth-child(1) {
+  margin-bottom: 2% ;
 }
