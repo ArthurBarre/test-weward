@@ -19,6 +19,7 @@ export default () => {
   const [remuneration, setRemuneration] = useState(500);
   const [postalCode, setPostalCode] = useState(75019);
   const [date , setRawDate] =  useState(new Date());
+  // setRawDate()
   const dispatch = useDispatch();
   const getPoint = () => {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
@@ -36,14 +37,14 @@ const saveData = () => {
   dispatch(setLocation(rawLocation))
   dispatch(setTitle(title))
   dispatch(setDesc(description))
-  // dispatch(setDate(moment(date).toDate()))
+  dispatch(setDate(moment(date).format('DD-MM-YYYY')))
   dispatch(setRem(remuneration))
   dispatch(setLocation(rawLocation))
   dispatch(setAdress(address))
 }
 const handleDate = date => {
-  console.log(moment(date).format('DD-MM-YYYY'))
-  setRawDate(moment(date).toDate())
+  // console.log(moment(date).format('DD-MM-YYYY'))
+  setRawDate(date)
 };
 
   return(
@@ -63,6 +64,7 @@ const handleDate = date => {
           <label for="address">Date du début de la campagne</label>
           <DatePicker
             className='date-picker'
+            dateFormat="dd-MM-yyyy"
             selected={date}
             onChange={handleDate}
           />
@@ -96,15 +98,6 @@ const handleDate = date => {
           onChange={e=>setRawAdress(e.target.value)}
           value={address}
         />
-        </div>
-        <div className="form-group">
-          <label for="postalCode">Code postal du lieu de vente</label>
-          <input 
-          type="number" 
-          name="postalCode"
-          className="form-control"
-          value={postalCode}
-          onChange={e=>setPostalCode(e.target.value)}/>
         </div>
         <div className="buttons">
         <div 

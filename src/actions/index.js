@@ -28,7 +28,7 @@ export const setDate = ( str ) => {
 
 export const setRem = ( nbr ) => {
   return {
-    type: 'SET_DATE',
+    type: 'SET_REM',
     payload: nbr
   }
 }
