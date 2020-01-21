@@ -10,12 +10,12 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default () => {
 
-  const [address , setRawAdress] =  useState('12 Rue de Crimée 75019');
-  const [title , setRawTitle] =  useState('Ma campagne');
-  const [description , setDescription] =  useState('Description de la campagne');
-  const [rawLocation, setRawLocation] = useState({});
-  const [remuneration, setRemuneration] = useState(500);
-  const [date , setRawDate] = useState(new Date());
+  const [ address , setRawAdress ] =  useState('12 Rue de Crimée 75019');
+  const [ title , setRawTitle ] =  useState('Ma campagne');
+  const [ description , setDescription ] =  useState('Description de la campagne');
+  const [ rawLocation, setRawLocation ] = useState({});
+  const [ remuneration, setRemuneration ] = useState(500);
+  const [ date, setRawDate ] = useState( new Date() );
   const dispatch = useDispatch();
 
   const submitData = () => {
@@ -25,10 +25,11 @@ export default () => {
           key:api_key
         }
     })
-    .then(function(response){
+    .then(response=>{
       setRawLocation(response.data.results[0].geometry.location);
       saveData();
     })
+    .catch(err=>console.log(err))
 }
 
 const saveData = () => {
