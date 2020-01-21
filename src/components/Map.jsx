@@ -12,7 +12,7 @@ const MarkerEvent = () =>(
 
 export default () => {
   const location = useSelector(state => state.location);
-  const [viewPort, setViewport] = useState({
+  const [viewport, setViewport] = useState({
     center: {
       lat: 48,
       lng: 2.33
@@ -23,8 +23,8 @@ export default () => {
     <div style={{ height: '350px', width: '100%' }}>
     <GoogleMapReact
       bootstrapURLKeys={{ key: api_key }}
-      defaultCenter={ viewPort.center }
-      defaultZoom={ viewPort.zoom }
+      defaultCenter={ viewport.center }
+      defaultZoom={ viewport.zoom }
     >
       <MarkerEvent
         lat={ location.lat }
