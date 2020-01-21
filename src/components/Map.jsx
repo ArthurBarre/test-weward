@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import logo from '../assets/images/logo.png'
 import {api_key} from '../constants/constants';
  
-const AnyReactComponent = ({title}) => <div>
+const MarkerEvent = ({title}) => <div>
   <img className='logo-maps' src={logo} alt='logo'/>
   {title}
   </div>;
@@ -39,7 +39,7 @@ class SimpleMap extends Component {
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >
-          <AnyReactComponent
+          <MarkerEvent
             lat={location.lat}
             lng={location.lng}
             text={title}
