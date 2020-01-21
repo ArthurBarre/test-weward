@@ -9,18 +9,27 @@ import {close} from '../actions/index';
 export default () => {
   const data = useSelector(state => state);
   const isSubmited = useSelector(state => state.submit);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const Message = () => (
-    <FlashMessage duration={3000}>
-      <div className='alert'>
-        <strong>I will disapper in 5 seconds!</strong>
-        <MapContainer style={{ height:80 }} title={data.title} location={data.location} center={data.location}/>
-        <div 
-        type="submit" 
-        className="btn btn-primary"
+    <FlashMessage duration={5000}>
+      <div 
+        className="btn btn-primary close"
         onClick={()=>dispatch(close())}
-        >Fermer le récapitulatif</div>
+      >Close</div>
+      <div className='alert'>
+        <h2 className='text-light'>Récapitulatif de campagne</h2>
+        <div className="card-body">
+          <h5 className="card-title text-light">{data.title}</h5>
+          <p className="card-text text-light">{data.desc}</p>
+          <ul className="list-group list-group-flush border-radius">
+            <li className="list-group-item">Adresse du point de vente de la campagne : <strong>{data.address}</strong> </li>
+            <li className="list-group-item">Adresse du point de vente de la campagne : <strong>{data.address}</strong> </li>
+            <li className="list-group-item">Rémunération de la campagne <strong>{data.rem}</strong></li>
+            <li className="list-group-item">Date du début de la campagne : <strong>{data.date}</strong></li>
+          </ul>
+        </div>
+        <MapContainer style={{ height:80 }} title={data.title} location={data.location} center={data.location}/>
       </div>
     </FlashMessage>
   )

@@ -12,7 +12,7 @@ body {
 }
 .app-wrapper {
   width: 100vw;
-  height: 100vh;
+  height: 90%;
   margin-top: 20px;
   display: flex;
   flex-direction: row;
@@ -20,7 +20,7 @@ body {
 
 .form {
   width: 50vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   margin-top: 5%;
@@ -28,13 +28,16 @@ body {
 
 .render {
   width: 50vw;
-  height: 100vh;
+  height: 120%;
+  margin-top: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #FC5B55;
 }
-
+.card-body{
+  flex: 0 0 auto;
+}
 .form-campaign {
   width:80%;
 }
@@ -71,9 +74,6 @@ body {
 .map {
   height:80px;
 }
-.map2 {
-
-}
 
 .logo-maps {
   width: 30px;
@@ -99,6 +99,12 @@ body {
   border: none;
 }
 
+.btn:hover {
+  background-color: white ;
+  border: 1px solid #FC5B55;
+  color: #FC5B55;
+}
+
 .space {
   margin-bottom: 1rem;
 }
@@ -114,10 +120,22 @@ body {
   left: 0;
   width: 100vw;
   height:100vh;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color:#FC5B55 ;
   z-index: 4;
+}
+
+.close {
+  position: absolute;
+  top:10px;
+  right: 10px;
+  z-index: 5;
+}
+
+.border-radius {
+  border-radius: 0.25rem ;
 }
