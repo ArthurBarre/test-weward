@@ -39,3 +39,15 @@ export const setAdress = ( str ) => {
     payload: str
   }
 }
+
+export const submit = (  ) => {
+  return {
+    type: 'SUBMIT',
+  }
+}
+
+export const close = (  ) => {
+  return {
+    type: 'CLOSE',
+  }
+}

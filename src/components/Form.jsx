@@ -3,9 +3,9 @@ import axios from 'axios';
 import moment from 'moment';
 import {useSelector, useDispatch} from 'react-redux';
 import DatePicker from "react-datepicker";
-import {api_key} from '../constants/constants';
+import {api_key} from '../constants';
 
-import {setLocation, setDesc, setRem, setTitle, setDate, setAdress} from '../actions/index';
+import {setLocation, setDesc, setRem, setTitle, setDate, setAdress, submit} from '../actions/index';
 import '../index.css';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -14,11 +14,10 @@ import "react-datepicker/dist/react-datepicker.css";
 export default () => {
   const [address , setRawAdress] =  useState('12 Rue de Crimée 75019');
   const [title , setRawTitle] =  useState('Ma campagne');
-  const [description , setDescription] =  useState('');
+  const [description , setDescription] =  useState('Description de la campagne');
   const [rawLocation, setRawLocation] = useState({});
   const [remuneration, setRemuneration] = useState(500);
   const [date , setRawDate] =  useState(new Date());
-  // setRawDate()
   const dispatch = useDispatch();
   const getPoint = () => {
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
@@ -32,6 +31,7 @@ export default () => {
           saveData()
       })
 }
+
 const saveData = () => {
   dispatch(setLocation(rawLocation))
   dispatch(setTitle(title))
@@ -41,6 +41,11 @@ const saveData = () => {
   dispatch(setLocation(rawLocation))
   dispatch(setAdress(address))
 }
+
+const revealData = () => {
+  dispatch(submit())
+}
+
 const handleDate = date => {
   setRawDate(date)
 };
@@ -48,8 +53,9 @@ const handleDate = date => {
   return(
     <div className='form'>
       <form className='form-campaign'>
+      <h3 className='space'>Enregistrer une nouvelle campagne</h3>
       <div className="form-group">
-          <label for="title">Titre de la campagne</label>
+          <label htmlFor="title">Titre de la campagne</label>
           <input placeholder="Entrer l'adresse de votre lieu de vente" 
           name='title' 
           type="text" 
@@ -59,7 +65,7 @@ const handleDate = date => {
         />
         </div>
         <div className="form-group date">
-          <label for="address">Date du début de la campagne</label>
+          <label htmlFor="address">Date du début de la campagne</label>
           <DatePicker
             className='date-picker'
             dateFormat="dd-MM-yyyy"
@@ -68,7 +74,7 @@ const handleDate = date => {
           />
         </div>
         <div className="form-group">
-          <label for="description">Déscription de la campagne</label>
+          <label htmlFor="description">Déscription de la campagne</label>
           <textarea 
           name="description"
           rows="5" cols="33"
@@ -79,7 +85,7 @@ const handleDate = date => {
           </textarea>
         </div>
         <div className="form-group">
-          <label for="remuneration">Rémunération de la campagne</label>
+          <label htmlFor="remuneration">Rémunération de la campagne</label>
           <input 
           type="number" 
           name="remuneration"
@@ -88,7 +94,7 @@ const handleDate = date => {
           onChange={e=>setRemuneration(e.target.value)}/>
         </div>
         <div className="form-group">
-          <label for="address">Adresse du lieu de vente</label>
+          <label htmlFor="address">Adresse du lieu de vente</label>
           <input placeholder="Entrer l'adresse de votre lieu de vente" 
           name='address' 
           type="text" 
@@ -106,8 +112,8 @@ const handleDate = date => {
         <div 
         type="submit" 
         className="btn btn-primary"
-        onClick={()=>saveData()}
-        >Entregister les données</div>
+        onClick={()=>revealData()}
+        >Résumé</div>
         </div>
       </form>
     </div>
